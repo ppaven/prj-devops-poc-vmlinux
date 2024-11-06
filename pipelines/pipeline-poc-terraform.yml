@@ -1,0 +1,25 @@
+name: Terraform - deploy VM Linux to POC environement
+
+trigger: 
+   branches:
+    include:
+    - master
+
+variables:
+  - group: Terraform_SP
+  - name: rootFolder
+    value: './'
+  - name: backendfile
+    value: 'poc.vml.tfstate'
+  - name: tfvarsFile
+    value: 'terraform.poc.tfvars'
+  - name: environment
+    value: 'POC'
+  
+stages:
+- template: templates/terraform-deploy-template.yml
+  parameters:
+    rootFolder: $(rootFolder)
+    backendfile: $(backendfile)
+    tfvarsFile: $(tfvarsFile)
+    environment: $(environment)

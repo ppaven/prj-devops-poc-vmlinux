@@ -1,0 +1,27 @@
+name: Terraform - deploy VM Linux to PRD environement
+
+# trigger: none
+resources:
+  pipelines:
+  - pipeline: pipeline-poc-terraform # Name of the pipeline resource.
+    source: pipeline-poc-terraform # The name of the pipeline referenced by this pipeline resource.
+    trigger: true # Run pipeline when any run of pipeline-poc-terraform completes
+
+variables:
+  - group: Terraform_SP
+  - name: rootFolder
+    value: './'
+  - name: backendfile
+    value: 'prd.vml.tfstate'
+  - name: tfvarsFile
+    value: 'terraform.prd.tfvars'
+  - name: environment
+    value: 'PRD'
+
+stages:
+- template: templates/terraform-deploy-template.yml
+  parameters:
+    rootFolder: $(rootFolder)
+    backendfile: $(backendfile)
+    tfvarsFile: $(tfvarsFile)
+    environment: $(environment)

@@ -27,6 +27,17 @@ variable "location" {
 }
 
 ################
+# Network
+variable address_space {
+  type = list(string)
+  default = [""]
+}
+variable address_snet {
+  type = list(string)
+  default = [""]
+}
+
+################
 # Tags
 variable tags {
   type        = map(string)

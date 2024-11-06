@@ -1,6 +1,10 @@
 env      = "POC"
 location = "northeurope"
 
+# network
+address_space = ["10.0.0.0/16"]
+address_snet  = ["10.0.1.0/24"]
+
 # tags
 tags = {
     app_owner            = "INFRA"

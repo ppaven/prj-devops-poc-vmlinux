@@ -13,6 +13,7 @@ secrets.tfvars
 
 # Module directory
 .terraform/
+.terraform.lock.hcl
 
 # Ignore CLI configuration files
 .terraformrc

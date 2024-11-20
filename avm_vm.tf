@@ -5,7 +5,7 @@ module "vm" {
   source = "Azure/avm-res-compute-virtualmachine/azurerm"
   #version = "0.15.1"
 
-  name                               = lower("${module.naming.virtual_machine.name}01")
+  name = lower("${module.naming.virtual_machine.name}01")
 
   admin_username                     = lower("admin${var.company_trig}")
   disable_password_authentication    = false

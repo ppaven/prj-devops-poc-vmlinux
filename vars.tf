@@ -28,18 +28,18 @@ variable "location" {
 
 ################
 # Network
-variable address_space {
-  type = list(string)
+variable "address_space" {
+  type    = list(string)
   default = [""]
 }
-variable address_snet {
-  type = list(string)
+variable "address_snet" {
+  type    = list(string)
   default = [""]
 }
 
 ################
 # Tags
-variable tags {
+variable "tags" {
   type        = map(string)
   description = "A map of the tags to use on the resources that are deployed with this module."
 

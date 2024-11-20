@@ -1,6 +1,7 @@
 name: Terraform - deploy VM Linux to PRD environement
 
-# trigger: none
+trigger: none
+
 resources:
   pipelines:
   - pipeline: pipeline-poc-terraform # Name of the pipeline resource.

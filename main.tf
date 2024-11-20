@@ -1,10 +1,10 @@
 provider "azurerm" {
-  # resource_provider_registrations = "core"
   features {
     key_vault {
       purge_soft_delete_on_destroy = true
     }
   }
+  use_oidc = true
 }
 
 data "azurerm_client_config" "current" {}

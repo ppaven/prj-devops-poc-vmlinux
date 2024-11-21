@@ -6,7 +6,7 @@
 # Documentation for `hashicorp/setup-terraform` is located here: https://github.com/hashicorp/setup-terraform
 #
 # To use this workflow, you will need to complete the following setup steps.
-#
+# 
 name: 'POC_Linux_VM_Terraform'
 
 on:

@@ -30,7 +30,9 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     environment: poc
-    
+    env : 
+      TF_BACKEND_FILE: ${{ secrets.TF_BACKEND_FILE }}
+      TF_VARS_FILE: ${{ secrets.TF_VARS_FILE }}
     defaults:
       run:
         shell: bash
@@ -46,7 +48,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init -backend-config "key=poc.vml.tfstate" -reconfigure
+      run: terraform init -backend-config "key=${TF_BACKEND_FILE}" -reconfigure
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
@@ -54,9 +56,9 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -var-file "terraform.poc.tfvars" -input=false
+      run: terraform plan -var-file "${TF_VARS_FILE}" -input=false
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: terraform apply -var-file "terraform.poc.tfvars" -auto-approve -input=false
+      run: terraform apply -var-file "${TF_VARS_FILE}" -auto-approve -input=false
 
